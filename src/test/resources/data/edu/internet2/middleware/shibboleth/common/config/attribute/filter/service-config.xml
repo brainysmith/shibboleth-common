@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd                            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+    <bean id="policy2" class="org.opensaml.util.resource.ClasspathResource">
+        <constructor-arg value="/data/edu/internet2/middleware/shibboleth/common/attribute/filtering/policy2.xml"/>
+    </bean>
+
+    <bean id="policy3" class="org.opensaml.util.resource.ClasspathResource">
+        <constructor-arg value="/data/edu/internet2/middleware/shibboleth/common/attribute/filtering/policy3.xml"/>
+    </bean>
+
+    <bean id="engineA" class="edu.internet2.middleware.shibboleth.common.attribute.filtering.provider.ShibbolethAttributeFilteringEngine" init-method="initialize">
+        <property name="serviceConfigurations">
+            <list>
+                <ref bean="policy3"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="engineB" class="edu.internet2.middleware.shibboleth.common.attribute.filtering.provider.ShibbolethAttributeFilteringEngine" init-method="initialize">
+        <property name="serviceConfigurations">
+            <list>
+                <ref bean="policy2"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="engineC" class="edu.internet2.middleware.shibboleth.common.attribute.filtering.provider.ShibbolethAttributeFilteringEngine" init-method="initialize">
+        <property name="serviceConfigurations">
+            <list>
+                <ref bean="policy2"/>
+                <ref bean="policy3"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>

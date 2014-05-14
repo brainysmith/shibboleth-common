@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:annotation>
+        <xsd:documentation>
+            Schema for configuring and mapping request paths to profile handlers.
+
+            This schema is meant to act as a chameleon schema.
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:complexType name="VelocityErrorHandler">
+        <xsd:annotation>
+            <xsd:documentation>
+                Error handler that renders an error page by evaluating a velocity template.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ErrorHandlerType">
+                <xsd:attribute name="errorTemplatePath" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            Classpath path to the velocity template used to render the error page output.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="velocityEngine" type="xsd:string" default="shibboleth.VelocityEngine">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            Name of the Spring configured Velocity engine. Deployers should almost never change this
+                            value.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="JSPErrorHandler">
+        <xsd:annotation>
+            <xsd:documentation>
+                Error handler that redirects to a JSP page in order to render an error message to the user.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ErrorHandlerType">
+                <xsd:attribute name="jspPagePath" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            Path to the JSP page. This path may be absolute (i.e. start with a "/"), in which case the
+                            path is assumed to be from the root of the servlet context, or relative, in which case the
+                            page is assumed to be relative from the request dispatcher location. Deployers are strongly
+                            encouraged to use absolute paths.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="ErrorHandlerType" abstract="true">
+        <xsd:complexContent>
+            <xsd:extension base="RequestHandlerType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="ShibbolethProfileHandlerType" abstract="true">
+        <xsd:complexContent>
+            <xsd:extension base="RequestURIMappedProfileHandlerType">
+                <xsd:attribute name="parserPoolRef" type="xsd:string" default="shibboleth.ParserPool">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            The name of the parser pool used by the profile handler.
+                            
+                            This setting should not be changed from its default unless the deployer fully understands
+                            the inter-relationship between IdP components.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="storageServiceRef" type="xsd:string" default="shibboleth.StorageService">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            The name of the storage service used by the profile handler.
+                            
+                            This setting should not be changed from its default unless the deployer fully understands
+                            the inter-relationship between IdP components.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="relyingPartyManagerId" type="xsd:string" default="shibboleth.RelyingPartyConfigurationManager">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            The component ID of the relying party configuration manager to use with the profile handler.
+
+                            This setting should not be changed from its default unless the deployer fully understands
+                            the inter-relationship between IdP components.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="sessionManagerId" type="xsd:string" default="shibboleth.SessionManager">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            The component ID of the session manager to use with the profile handler.
+
+                            This setting should not be changed from its default unless the deployer fully understands
+                            the inter-relationship between IdP components.
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="RequestURIMappedProfileHandlerType" abstract="true">
+        <xsd:complexContent>
+            <xsd:extension base="RequestHandlerType">
+                <xsd:sequence>
+                    <xsd:element name="RequestPath" maxOccurs="unbounded" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Indicates the request path that maps to this profile handler.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="RequestHandlerType" abstract="true"/>
+
+</xsd:schema>
