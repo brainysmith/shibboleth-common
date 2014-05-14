@@ -6,7 +6,7 @@
 
 	<groupId>edu.internet2.middleware</groupId>
 	<artifactId>shibboleth-common</artifactId>
-    <version>trunk</version>
+    <version>blitz-patched</version>
     <packaging>jar</packaging>
 
     <name>Shibboleth Common Library</name>
