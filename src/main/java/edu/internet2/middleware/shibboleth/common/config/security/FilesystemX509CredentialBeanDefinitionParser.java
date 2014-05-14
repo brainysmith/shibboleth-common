@@ -22,7 +22,6 @@ import java.io.IOException;
 
 import javax.xml.namespace.QName;
 
-import com.blitz.idm.app.SubstitutionResolver;
 import org.springframework.beans.FatalBeanException;
 
 /**
@@ -36,7 +35,7 @@ public class FilesystemX509CredentialBeanDefinitionParser extends AbstractX509Cr
     /** {@inheritDoc} */
     protected byte[] getEncodedCRL(String certCRLContent) {
         try {
-            FileInputStream ins = new FileInputStream(SubstitutionResolver.resolve(certCRLContent));
+            FileInputStream ins = new FileInputStream(certCRLContent);
             byte[] encoded = new byte[ins.available()];
             ins.read(encoded);
             return encoded;
@@ -48,7 +47,7 @@ public class FilesystemX509CredentialBeanDefinitionParser extends AbstractX509Cr
     /** {@inheritDoc} */
     protected byte[] getEncodedCertificate(String certConfigContent) {
         try {
-            FileInputStream ins = new FileInputStream(SubstitutionResolver.resolve(certConfigContent));
+            FileInputStream ins = new FileInputStream(certConfigContent);
             byte[] encoded = new byte[ins.available()];
             ins.read(encoded);
             return encoded;
@@ -60,7 +59,7 @@ public class FilesystemX509CredentialBeanDefinitionParser extends AbstractX509Cr
     /** {@inheritDoc} */
     protected byte[] getEncodedPrivateKey(String keyConfigContent) {
         try {
-            FileInputStream ins = new FileInputStream(SubstitutionResolver.resolve(keyConfigContent));
+            FileInputStream ins = new FileInputStream(keyConfigContent);
             byte[] encoded = new byte[ins.available()];
             ins.read(encoded);
             return encoded;

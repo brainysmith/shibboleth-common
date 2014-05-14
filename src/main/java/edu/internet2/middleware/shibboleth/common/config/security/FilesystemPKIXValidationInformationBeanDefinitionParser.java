@@ -22,7 +22,6 @@ import java.io.IOException;
 
 import javax.xml.namespace.QName;
 
-import com.blitz.idm.app.SubstitutionResolver;
 import org.springframework.beans.FatalBeanException;
 
 /**
@@ -37,7 +36,7 @@ public class FilesystemPKIXValidationInformationBeanDefinitionParser
     /** {@inheritDoc} */
     protected byte[] getEncodedCRL(String certCRLContent) {
         try {
-            FileInputStream ins = new FileInputStream(SubstitutionResolver.resolve(certCRLContent));
+            FileInputStream ins = new FileInputStream(certCRLContent);
             byte[] encoded = new byte[ins.available()];
             ins.read(encoded);
             return encoded;
@@ -49,7 +48,7 @@ public class FilesystemPKIXValidationInformationBeanDefinitionParser
     /** {@inheritDoc} */
     protected byte[] getEncodedCertificate(String certConfigContent) {
         try {
-            FileInputStream ins = new FileInputStream(SubstitutionResolver.resolve(certConfigContent));
+            FileInputStream ins = new FileInputStream(certConfigContent);
             byte[] encoded = new byte[ins.available()];
             ins.read(encoded);
             return encoded;

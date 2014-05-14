@@ -22,7 +22,6 @@ import java.net.URISyntaxException;
 
 import javax.xml.namespace.QName;
 
-import com.blitz.idm.app.SubstitutionResolver;
 import org.opensaml.util.resource.FilesystemResource;
 import org.opensaml.xml.util.DatatypeHelper;
 import org.slf4j.Logger;
@@ -50,13 +49,13 @@ public class FilesystemResourceBeanDefinitionParser extends AbstractResourceBean
     /** {@inheritDoc} */
     protected String resolveId(Element configElement, AbstractBeanDefinition beanDefinition, ParserContext parserContext) {
         return FilesystemResource.class.getName() + ":"
-                + SubstitutionResolver.resolve(DatatypeHelper.safeTrimOrNullString(configElement.getAttributeNS(null, "file")));
+                + DatatypeHelper.safeTrimOrNullString(configElement.getAttributeNS(null, "file"));
     }
 
     /** {@inheritDoc} */
     protected void doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder builder) {
 
-        String file = SubstitutionResolver.resolve(DatatypeHelper.safeTrimOrNullString(element.getAttributeNS(null, "file")));
+        String file = DatatypeHelper.safeTrimOrNullString(element.getAttributeNS(null, "file"));
         if(file.startsWith("file:")){
             try{
                 builder.addConstructorArgValue(new URI(file));

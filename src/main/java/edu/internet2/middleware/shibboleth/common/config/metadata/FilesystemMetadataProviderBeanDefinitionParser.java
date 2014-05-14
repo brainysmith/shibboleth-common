@@ -21,7 +21,6 @@ import java.io.File;
 
 import javax.xml.namespace.QName;
 
-import com.blitz.idm.app.SubstitutionResolver;
 import org.opensaml.saml2.metadata.provider.FilesystemMetadataProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,7 +48,7 @@ public class FilesystemMetadataProviderBeanDefinitionParser extends AbstractRelo
     protected void doParse(Element config, ParserContext parserContext, BeanDefinitionBuilder builder) {
         super.doParse(config, parserContext, builder);
 
-        String metadataFile = SubstitutionResolver.resolve(config.getAttributeNS(null, "metadataFile"));
+        String metadataFile = config.getAttributeNS(null, "metadataFile");
         log.debug("Metadata provider '{}' reading metadata from: {}", getProviderId(config), metadataFile);
         builder.addConstructorArgValue(new File(metadataFile));
     }

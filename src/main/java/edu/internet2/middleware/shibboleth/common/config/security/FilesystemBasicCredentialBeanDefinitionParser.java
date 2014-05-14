@@ -22,7 +22,6 @@ import java.io.IOException;
 
 import javax.xml.namespace.QName;
 
-import com.blitz.idm.app.SubstitutionResolver;
 import org.springframework.beans.FatalBeanException;
 
 /**
@@ -36,7 +35,7 @@ public class FilesystemBasicCredentialBeanDefinitionParser extends AbstractBasic
     /** {@inheritDoc} */
     protected byte[] getEncodedPrivateKey(String keyConfigContent) {
         try {
-            FileInputStream ins = new FileInputStream(SubstitutionResolver.resolve(keyConfigContent));
+            FileInputStream ins = new FileInputStream(keyConfigContent);
             byte[] encoded = new byte[ins.available()];
             ins.read(encoded);
             return encoded;
@@ -48,7 +47,7 @@ public class FilesystemBasicCredentialBeanDefinitionParser extends AbstractBasic
     /** {@inheritDoc} */
     protected byte[] getEncodedSecretKey(String keyConfigContent) {
         try {
-            FileInputStream ins = new FileInputStream(SubstitutionResolver.resolve(keyConfigContent));
+            FileInputStream ins = new FileInputStream(keyConfigContent);
             byte[] encoded = new byte[ins.available()];
             ins.read(encoded);
             return encoded;
@@ -60,7 +59,7 @@ public class FilesystemBasicCredentialBeanDefinitionParser extends AbstractBasic
     /** {@inheritDoc} */
     protected byte[] getEncodedPublicKey(String keyConfigContent) {
         try {
-            FileInputStream ins = new FileInputStream(SubstitutionResolver.resolve(keyConfigContent));
+            FileInputStream ins = new FileInputStream(keyConfigContent);
             byte[] encoded = new byte[ins.available()];
             ins.read(encoded);
             return encoded;
