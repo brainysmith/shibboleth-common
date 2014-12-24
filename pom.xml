@@ -220,6 +220,10 @@
         </plugins>
     </build>
 
+    <properties>
+        <nexus-repository>http://build.reaxoft.loc/store/content/repositories</nexus-repository>
+        <thirdparty-repository-url>${nexus-repository}/thirdparty</thirdparty-repository-url>
+    </properties>
 
     <profiles>
         <profile>
@@ -230,7 +234,14 @@
                         <artifactId>maven-compiler-plugin</artifactId>
                     </plugin>
                 </plugins>
-            </build>            
+            </build>
+            <distributionManagement>
+                <repository>
+                    <id>build</id>
+                    <uniqueVersion>false</uniqueVersion>
+                    <url>${thirdparty-repository-url}</url>
+                </repository>
+            </distributionManagement>
         </profile>
     </profiles>
 
