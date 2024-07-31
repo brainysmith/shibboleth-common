@@ -9,6 +9,7 @@
     <version>blitz-patched-2</version>
     <packaging>jar</packaging>
 
+
     <name>Shibboleth Common Library</name>
     <description>
         The Shibboleth Common Library provides services/infrastructure that is common between Identity 
