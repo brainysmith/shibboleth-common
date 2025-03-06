@@ -1,0 +1,174 @@
+Changes in Release 1.4.0
+=============================================
+[SC-183] - Inappropriate 'RuleReference elements within an AND rule are not supported' error
+
+Changes in Release 1.3.6
+=============================================
+[SC-176] - aacli utility doesn't set peer entity role metadata for requester
+[SC-177] - aacli utility generates extra linefeed in output
+[SC-180] - ignResponses/signAssertions="conditional" incorrect for ECP profile
+[SC-181] - LDAPS certificate verification errors on failover
+[SC-182] - Unable to resolve deny rule references
+
+Changes in Release 1.3.5
+=============================================
+[SC-169] - Velocity ErrorHandler doesn't set Content-Type of response
+[SC-170] - Expose LDAP pool blockWaitTime on VT pool strategy via connector config
+[SC-171] - Bump Spring dependencies to the newest security patch release (SEC03)
+[SC-173] - LdapPoolEmptyStrategy should check that a connection to the LDAP server can be established during its initialization
+[SC-174] - Update dependencies
+
+Changes in Release 1.3.4
+=============================================
+[SC-162] - Attribute value added multiple times to retained value set if multiple policies permit the same values
+[SC-163] - NPE when using filtering based on EntityAttributes in metadata
+[SC-165] - Update dependencies
+[SC-167] - Reload of relying-party.xml creates new AbstractReloadingMetadataProvider threads without destroying earlier ones 
+
+Changes in Release 1.3.3
+=============================================
+[SIDP-161] - Filter engine removes "duplicate" scoped values based soley on the value and ignores the scope
+
+Changes in Release 1.3.2
+=============================================
+[SC-159] - attributeID property on match functors not getting loaded
+- Update OpenSAML version
+
+Changes in Release 1.3.1
+=============================================
+[SIDP-139] - Documented URI does not exist
+[SC-154] - NullPointerException in ShibbolethAttributeFilteringEngine
+[SC-155] - StoredIDDataConnector does not take into account SPNameQualifier for Attribute Queries
+[SC-156] - StoredIDPrincipalConnector does not take into account Affiliations
+[SC-158] - URL parsing in LDAP DNs broken
+
+Changes in Release 1.3.0
+=============================================
+[SC-125] - SVNResource doesn't check repository for changes, only the local working copy
+[SC-134] - Class cast exception logging errors in BaseService.loadContext
+[SC-135] - Add servlet request to Velocity error handler context
+[SC-136] - Add support for controlling the PKIXParameters "RevocationEnabled" flag through the IdP's TrustEngine configuration
+[SC-137] - FailoverDataConnector not used when validating a DataConnector
+[SC-138] - Make SPNameQualifier externally configurable
+[SC-141] - Stateless transient ID mapping feature
+[SC-142] - Create an attribute filter matching function based on the prescence of a supported NameID format in metadata
+[SC-143] - Expose lifetime setting on transientId attribute definition
+[SC-144] - Respond with UNKNOWN_PRINCIPAL_URI for /profile/SAML2/SOAP/AttributeQuery for unknown principals
+[SC-145] - Prioritization of NameID selection by RP
+[SC-146] - Incorrect filtering of scoped values when using basic:AND
+[SC-147] - Update POM to add plugin versions, use / publish to Shib.net Repo, and attach generated source and Javadocs
+[SC-148] - Update pom for vt-ldap 3.3.3
+[SC-150] - HTML-ize unsafe characters rather than naked URL encoding in error pages
+[SC-151] - Create Entity Attribute based attribute filter
+[SC-152] - Add a LogChute hook to route Velocity messages directly to slf4j, avoiding log4j
+
+Changes in Release 1.2.1
+=============================================
+[SC-115] - Unit test fails to run due to case mismatch in BaseTestCaseMetadata
+[SC-116] - By default, always sign SAML Response for SAML 1.1 SSO
+[SC-117] - Cache is never created for LdapDataConnector
+[SC-118] - Update config tooling for metadata-based trust engines to use MetadataCredentialResolverFactory 
+[SC-119] - Scoped attribute throws NPE on a null value
+[SC-120] - NPE when using non-URL in FileBackedHTTPMetadataProvider
+[SC-121] - relaying-party config fails to load with https metadata providers
+[SC-123] - Scoped attribute values return a different value string in 1.2.0 than they did in 1.1.4
+[SC-124] - Update libs for 1.2.1
+[SC-126] - SSLContext is initialized twice when using an authentication credential
+[SC-127] - Support for custom Spring configs in AACLI
+[SC-128] - Constructor arguments to VelocityErrorHandler are reversed in bean parser.
+[SC-129] - assertionLifetime attribute does not modify the lifetime in returned assertion
+[SC-130] - IssueInstant security rule is initialized with milliseconds, not seconds
+[SC-131] - principalTokenId with a null user name
+[SC-132] - NPE in MappedAttributeDefinition when the dependency attribute is null
+[SC-133] - changes to attribute-resolver.xml choke loaded IdP
+
+Changes in Release 1.2.0
+=============================================
+[SC-41] - LDAP connector caches results indefinitely
+[SC-63] - Use XML Schema duration syntax instead of integers for duration configuration options
+[SC-73] - Update LdapDataConnector for vt-ldap 3.x
+[SC-85] - PreparedStatement.setNULL requires JDBC type for certain databases
+[SC-87] - ldap reconnect only supports communication exceptions
+[SC-88] - Update libraries for 1.1.5 release
+[SC-89] - enhance toString() of ScopedAttributeValue
+[SC-90] - Chaining ResourceFilter fails to load its children filters
+[SC-91] - Unauthorized attribute release during query from SP with wrong persistent ID value
+[SC-92] - StoredIDStore Hangs On getActivePersistentIdEntry
+[SC-93] - use bind variables in the StoredId DataConnector
+[SC-94] - Support for RDBMS and StoredID statement timeouts
+[SC-96] - Default signing for 2.0 SSO over assertion rather than response
+[SC-98] - Requesting PartitionEntryIterator from EventingMapBasedStorageService results in NPE in some cases 
+[SC-99] - LDAP and RDBMS data connectors improperly initalized for use with multiple filter templates
+[SC-100] - Report logback configuration problems
+[SC-101] - LDAP data connector option to lowercase attribute names
+[SC-102] - Proxy Support for the URL Metadata Provider
+[SC-103] - Improved LDAP failover behavior
+[SC-105] - Construction of logging config path usees wrong separator
+[SC-106] - Reduce logging of data connector errors
+[SC-108] - Remove unit tests cases that won't be fixed in 2.X branch, fix the rest
+[SC-109] - aacli does not honor saml:AttributeRequesterInEntityGroup type rules
+[SC-111] - Update 3rd party libraries for 1.2.0 release
+[SC-114] - Cannot create LDAPDirectory resolver:DataConnector with empty baseDN
+
+Changes in Release 1.1.4
+=============================================
+[SC-84] - Update Libraries for Release 1.1.4
+
+Changes in Release 1.1.3
+=============================================
+[SC-61] - Several XML schemas incorrectly use xs:positiveInteger when they should really use xs:nonNegativeInteger
+[SC-66] - Cross-site scripting attack possible when incorrect URL is entered
+[SC-67] - Update libs for 1.1.3 release
+[SC-69] - LDAP data connector factory bean is inverting constructor params for poolInitialSize and poolMaxIdleSize
+[SC-70] - Upgrade Commons Pool library to 1.3
+[SC-72] -  Can't set property file for attribute-resolver.xml in service.xml
+[SC-75] - SVNResource does not work at all
+[SC-77] - StoredId doesn't carry over old (computed Id) values correctly
+[SC-78] - AACLI fail testing storedId
+[SC-79] - Configuration Reloading only works when RetryAttempts are configured
+[SC-80] - positional parameters do not get substituted in Mapped attr defs 
+[SC-81] -  attribute-resolver.xml ScriptFile type causes IdP startup failure
+[SC-82] - empty source attribute for conector computedID causes AttributeResolutionException
+[SC-83] - IdP throws HTML error (instead of SAML error) whena persistentID cannot be found
+
+Changes in Release 1.1.2
+=============================================
+* Address case where, in theory, StoredID data connector could generate the same ID more than once
+    overwrite the information for the previous record associated with that ID
+* Minor memory usage improvements
+* Pick up new lib versions
+[SC-65] - java.lang.NoSuchMethodError: ch.qos.logback.classic.LoggerContext.shutdownAndReset()
+    this was fixed in rebuild of 1.1.2
+
+Changes in Release 1.1.1
+=============================================
+[SC-58] - The maxResultSize attribute in the LDAP DataConnector is being ignored
+[SC-59] - RDBMS data connector throws NullPointerException when data source is null.
+[SC-62] - Normalize LDAP SearchFilter String
+
+Changes in Release 1.1.0
+=============================================
+- Attribute caching in LDAP and relational database connectors has been disabled by default until
+  the cache is properly cleared when a user's session expires or is destroyed.
+
+[SC-37] - Filtering engine results in intersection of policies; union of policies is desired
+[SC-38] - StoredIDStore: invalid character in prepared statement (Oracle only)
+[SC-39] - Add ability to explicitly deny the release attributes
+[SC-40] - Allow macros within configuration resources to be expanded when the resource is loaded
+[SC-42] - Allow for ResourceBackedMetadataProvider as a metadata provider resource type
+[SC-43] - Create a new Resource type that can read information from a Subversion respository
+[SC-44] - StoredIDStore Connection Resource Leak
+[SC-45] - Upgrade to OpenSAML 2.2.0
+[SC-46] - Upgrade to VT LDAP lib version 2.8.2
+[SC-47] - Check to see if the configured JDBC driver is available on the classpath, if not then error out
+[SC-48] - Blank value for edupersonaffiliation in directory causes exception when evaluating eduPersonScopedAffiliation
+[SC-49] - Add version information in library JAR manifest and provide command line tool to view it
+[SC-50] - Provide options to enumerate trusted names for static PKIX trust engines
+[SC-52] - Include SMTPAppender dependencies in base distribution
+[SC-55] - Cleanup StorageService entry classes
+[SC-56] - logback SMTP appender PatterLayout interspersed with stack trace
+[SC-57] - The RelationalDatabase connector is missing a noResultsIsError like the LDAP connector
+
+[SIDP-200] - attribute-filter.xml AtributeRule ignoreCase logic is backwards
+[SIDP-213] - aacli.sh computedid Exception in thread "main" java.lang.NullPointerException
+[SIDP-220] - creation of mapped attribute in attribute-resolver doesn't seem correct

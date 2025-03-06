@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<security:ValidationOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="urn:mace:shibboleth:2.0:security" xsi:schemaLocation="urn:mace:shibboleth:2.0:security classpath:/schema/shibboleth-2.0-security.xsd"/>
